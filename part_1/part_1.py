@@ -10,7 +10,7 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 # if you wanna iterate over multiple files and json, the default source folder name is this.
-DEFAULT_BASE_DIR: str = ''
+DEFAULT_BASE_DIR: str = 'INSERT_YOUR_DIR_WITH_PNG_AND_JSON_HERE'
 
 # The label we wanna look for in the polygons json file
 TFL_LABEL = ['traffic light']
@@ -31,17 +31,9 @@ def find_tfl_lights(c_image: np.ndarray,
     :param kwargs: Whatever config you want to pass in here.
     :return: 4-tuple of x_red, y_red, x_green, y_green.
     """
-    most_red_intensity = 0
-    most_red_pixel = (0, 0)  # Tuple of (x, y) coordinates
-
-    # Step 4: Iterate through all pixels and find the most red pixel
-    red_intensity = c_image[:, :, 0]
-
-    # Step 4: Find the pixel with the highest red intensity
-    most_red_pixel_indices = np.unravel_index(np.argmax(red_intensity), red_intensity.shape)
-    most_red_intensity = red_intensity[most_red_pixel_indices]
-
-    return most_red_pixel_indices[0], most_red_pixel_indices[1], 0, 0
+    ### WRITE YOUR CODE HERE ###
+    ### USE HELPER FUNCTIONS ###
+    return [500, 700, 900], [500, 550, 600], [600, 800], [400, 300]
 
 
 ### GIVEN CODE TO TEST YOUR IMPLENTATION AND PLOT THE PICTURES
@@ -110,7 +102,6 @@ def main(argv=None):
     # If you entered a custom dir to run from or the default dir exist in your project then:
     directory_path: Path = Path(args.dir or DEFAULT_BASE_DIR)
     if directory_path.exists():
-        print("Running on images under {}".format(directory_path))
         # gets a list of all the files in the directory that ends with "_leftImg8bit.png".
         file_list: List[Path] = list(directory_path.glob('*_leftImg8bit.png'))
 
